@@ -1,0 +1,43 @@
+#!perl
+
+#**********************************************************
+
+=head2 test_function($attr) - Test function
+ 
+  Arguments:
+  $db, $admin, %conf, %lang, $html, %permissions, $Users, $stm, $inner_tpl, $line
+  Returns:
+   1
+
+ 
+=cut
+
+#**********************************************************
+
+use strict;
+use warnings FATAL => 'all';
+use Users::db::Users;
+our ($db, $admin, %conf, %lang, $html, %permissions, @WEEKDAYS, @MONTHES, %FORM);
+
+sub main {
+
+  use Users;
+
+  our Users $Users = My_module->new($db, $admin, \%conf);
+  my $stm = $Users->take();
+  my $inner_tpl;
+
+  # add data to template from $stm
+  foreach my $line (@$stm) {
+    $inner_tpl .= $html->tpl_show(_include('user_form', 'Users'), { USER_NAME => ($line->{user_name}), USER_ADDRESS => ($line->{user_address}), USER_EMAIL => ($line->{user_email}) });
+
+    # turn on template module
+    require Abills::Templates;
+
+    # print html
+    print $html->tpl_show(_include('main_tpl', 'Users'), { TITLE => "Users information", CONTENT => $inner_tpl });
+  }
+}
+
+1;
+
