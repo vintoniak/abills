@@ -23,11 +23,11 @@ DROP TABLE IF EXISTS `user_inform`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user_inform` (
-  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(45) NOT NULL DEFAULT 'name',
-  `user_address` varchar(45) NOT NULL DEFAULT 'address',
-  `user_email` varchar(45) NOT NULL DEFAULT 'email',
-  PRIMARY KEY (`user_id`)
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(45) NOT NULL DEFAULT '' COMMENT 'User name',
+  `user_address` varchar(45) NOT NULL DEFAULT '' COMMENT 'user address',
+  `user_email` varchar(45) NOT NULL DEFAULT '' COMMENT 'User email',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -50,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-09 21:04:11
+-- Dump completed on 2019-11-15 13:27:52
